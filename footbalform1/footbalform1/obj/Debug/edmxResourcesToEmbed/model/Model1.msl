@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="final18ModelStoreContainer" CdmEntityContainer="final18Entities">
+    <EntitySetMapping Name="Meydancas">
+      <EntityTypeMapping TypeName="final18Model.Meydanca">
+        <MappingFragment StoreEntitySet="Meydanca">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Otaqlar" ColumnName="Otaqlar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Umumis">
+      <EntityTypeMapping TypeName="final18Model.Umumi">
+        <MappingFragment StoreEntitySet="Umumi">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Musteriadi" ColumnName="Musteriadi" />
+          <ScalarProperty Name="Musterinomresi" ColumnName="Musterinomresi" />
+          <ScalarProperty Name="Qiymetler" ColumnName="Qiymetler" />
+          <ScalarProperty Name="Necenefer" ColumnName="Necenefer" />
+          <ScalarProperty Name="Tarix" ColumnName="Tarix" />
+          <ScalarProperty Name="MeydancaID" ColumnName="MeydancaID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="final18Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Meydanca">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Otaqlar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Umumis" Relationship="Self.FK_Umumi_Meydanca" FromRole="Meydanca" ToRole="Umumi" />
+  </EntityType>
+  <EntityType Name="Umumi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Musteriadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Musterinomresi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qiymetler" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Necenefer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Tarix" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MeydancaID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Meydanca" Relationship="Self.FK_Umumi_Meydanca" FromRole="Umumi" ToRole="Meydanca" />
+  </EntityType>
+  <Association Name="FK_Umumi_Meydanca">
+    <End Role="Meydanca" Type="Self.Meydanca" Multiplicity="1" />
+    <End Role="Umumi" Type="Self.Umumi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Meydanca">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Umumi">
+        <PropertyRef Name="MeydancaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="final18Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Meydancas" EntityType="Self.Meydanca" />
+    <EntitySet Name="Umumis" EntityType="Self.Umumi" />
+    <AssociationSet Name="FK_Umumi_Meydanca" Association="Self.FK_Umumi_Meydanca">
+      <End Role="Meydanca" EntitySet="Meydancas" />
+      <End Role="Umumi" EntitySet="Umumis" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

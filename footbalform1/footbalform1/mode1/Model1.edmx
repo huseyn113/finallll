@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="formfinal5Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Meydanca00">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Otaqlar" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Umumi00">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Musteriadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Musterinomresi" Type="int" Nullable="false" />
+          <Property Name="Qiymetler" Type="int" Nullable="false" />
+          <Property Name="Necenefer" Type="int" Nullable="false" />
+          <Property Name="tarix" Type="datetime" Nullable="false" />
+          <Property Name="MeydancaID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Umumi00_Meydanca00">
+          <End Role="Meydanca00" Type="Self.Meydanca00" Multiplicity="1" />
+          <End Role="Umumi00" Type="Self.Umumi00" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meydanca00">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Umumi00">
+              <PropertyRef Name="MeydancaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="formfinal5ModelStoreContainer">
+          <EntitySet Name="Meydanca00" EntityType="Self.Meydanca00" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Umumi00" EntityType="Self.Umumi00" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Umumi00_Meydanca00" Association="Self.FK_Umumi00_Meydanca00">
+            <End Role="Meydanca00" EntitySet="Meydanca00" />
+            <End Role="Umumi00" EntitySet="Umumi00" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="formfinal5Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Meydanca00">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otaqlar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Umumi00" Relationship="Self.FK_Umumi00_Meydanca00" FromRole="Meydanca00" ToRole="Umumi00" />
+        </EntityType>
+        <EntityType Name="Umumi00">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Musteriadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Musterinomresi" Type="Int32" Nullable="false" />
+          <Property Name="Qiymetler" Type="Int32" Nullable="false" />
+          <Property Name="Necenefer" Type="Int32" Nullable="false" />
+          <Property Name="tarix" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MeydancaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Meydanca00" Relationship="Self.FK_Umumi00_Meydanca00" FromRole="Umumi00" ToRole="Meydanca00" />
+        </EntityType>
+        <Association Name="FK_Umumi00_Meydanca00">
+          <End Role="Meydanca00" Type="Self.Meydanca00" Multiplicity="1" />
+          <End Role="Umumi00" Type="Self.Umumi00" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meydanca00">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Umumi00">
+              <PropertyRef Name="MeydancaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="formfinal5Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Meydanca00" EntityType="Self.Meydanca00" />
+          <EntitySet Name="Umumi00" EntityType="Self.Umumi00" />
+          <AssociationSet Name="FK_Umumi00_Meydanca00" Association="Self.FK_Umumi00_Meydanca00">
+            <End Role="Meydanca00" EntitySet="Meydanca00" />
+            <End Role="Umumi00" EntitySet="Umumi00" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="formfinal5ModelStoreContainer" CdmEntityContainer="formfinal5Entities">
+          <EntitySetMapping Name="Meydanca00">
+            <EntityTypeMapping TypeName="formfinal5Model.Meydanca00">
+              <MappingFragment StoreEntitySet="Meydanca00">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Otaqlar" ColumnName="Otaqlar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Umumi00">
+            <EntityTypeMapping TypeName="formfinal5Model.Umumi00">
+              <MappingFragment StoreEntitySet="Umumi00">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Musteriadi" ColumnName="Musteriadi" />
+                <ScalarProperty Name="Musterinomresi" ColumnName="Musterinomresi" />
+                <ScalarProperty Name="Qiymetler" ColumnName="Qiymetler" />
+                <ScalarProperty Name="Necenefer" ColumnName="Necenefer" />
+                <ScalarProperty Name="tarix" ColumnName="tarix" />
+                <ScalarProperty Name="MeydancaID" ColumnName="MeydancaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
